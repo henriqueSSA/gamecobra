@@ -1,20 +1,18 @@
 package objetos;
 
+import java.util.Random;
+
 import modelo.Tela;
 
-public class Fruta {
-	public int posX;
-	public int posY;
+public class Fruta{
+	public int frutaX;
+	public int frutaY;
+	Random random;
 	
-	
-	public Fruta(int startX, int startY) {
-		this.posX = startX;
-		this.posY = startY;
-	}
 	
 	public void setRandom() {
-		this.posX = (int) (Math.random() * Tela.WIDTH);
-		this.posY = (int) (Math.random() * Tela.HEIGHT);
-				
+		this.frutaX = new Random().nextInt(Tela.WIDTH / Tela.SCALE)* Tela.SCALE;
+		this.frutaY = new Random().nextInt(Tela.HEIGHT / Tela.SCALE)* Tela.SCALE;
 	}
+	
 }

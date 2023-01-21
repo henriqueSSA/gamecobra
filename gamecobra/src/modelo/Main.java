@@ -2,21 +2,21 @@ package modelo;
 
 import javax.swing.JFrame;
 
-
-
 public class Main extends JFrame{
 	
 	public Main() {
-		setTitle("Snake Game");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		add(new Tela());
-		setSize(Tela.WIDTH,Tela.HEIGHT);
+		setTitle("Snake Game");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
+		pack();
+		setVisible(true);
 		setLocationRelativeTo(null);
 	}
-
-	public static void main(String[] args) {
-		new Main().setVisible(true);
-
-	}
-
+	
+	
+	  public static void main(String[] args) {
+	        new Main();
+	    }
+	 
 }
