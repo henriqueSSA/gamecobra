@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -73,6 +74,7 @@ public class Tela extends JPanel implements ActionListener{
 		if(statusJogo) {
 			cobra.andar();
 			comerFruta();
+			limites();
 			if(key_states[KeyEvent.VK_UP]) {
 				cobra.direcao = 'C';
 			}else if(key_states[KeyEvent.VK_DOWN]) {
@@ -82,9 +84,16 @@ public class Tela extends JPanel implements ActionListener{
 			}else if(key_states[KeyEvent.VK_RIGHT]) {
 				cobra.direcao = 'D';
 			}
+			
+		
+		}else {
+			t.stop();
+			JOptionPane.showMessageDialog(null, "           GAME OVER.");
+			
 		}
 		
 		repaint();
+		
 		
 	}
 	
@@ -93,6 +102,22 @@ public class Tela extends JPanel implements ActionListener{
 			fruta.setRandom();
 			cobra.length++;
 		}
+	}
+	
+	public void limites() {
+		if((cobra.cobraY[0] < 0) || (cobra.cobraY[0] > Tela.HEIGHT) ) {
+			statusJogo = false;			
+		}else if((cobra.cobraX[0] > Tela.WIDTH) || (cobra.cobraX[0] < 0) ) {
+			statusJogo = false;
+		}else {
+			for(int i=1;i<cobra.length;i++) {
+				if((cobra.cobraX[0] == cobra.cobraX[i]) && (cobra.cobraY[0] == cobra.cobraY[i])) {
+					statusJogo = false;
+				}
+			}
+		}
+		
+		
 	}
 	
 	private class KeyboardAdapter extends KeyAdapter{
